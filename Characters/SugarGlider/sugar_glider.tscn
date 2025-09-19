@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu1uc61lag8yo"]
+
+[ext_resource type="Texture2D" uid="uid://dvq15xtgyo1wg" path="res://Characters/SugarGlider/PlayerCharacter.png" id="1_wn30p"]
+[ext_resource type="Script" path="res://Characters/SugarGlider/PlayerInput.gd" id="2_btt52"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igi02"]
+radius = 6.25
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pp5s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wn30p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SugarGlider" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.64, 0.64)
+shape = SubResource("CapsuleShape2D_igi02")
+one_way_collision_margin = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.015, 0.015)
+sprite_frames = SubResource("SpriteFrames_4pp5s")
+centered = false
+offset = Vector2(-850, -1700)
+
+[node name="PlayerInput" type="Node2D" parent="."]
+script = ExtResource("2_btt52")
